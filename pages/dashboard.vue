@@ -27,13 +27,9 @@
 </template>
 
 <script lang="ts" setup>
-  // import { useCoins } from '../composables/useCoins.ts'
-  // const { data } = await useCoins()
+  import { useCoins } from '../composables/useCoins.ts'
+  const { data } = await useCoins()
   const search = ref<string>('')
-
-  import coins from '../api/data.json'
-  const data = ref([])
-  data.value = coins;
   const filterCrypto = computed(() => {
     const searchInput = search.value.toLowerCase()
     const dataFilter = data.value.filter(item => item.name.toLowerCase().includes(searchInput) || item.symbol.toLowerCase().includes(searchInput))

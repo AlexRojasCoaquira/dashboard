@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { Global } from '../interfaces/Global'
+  // import { Global } from '../interfaces/Global'
   const defaultForm = {
     email: '',
     cryptos: [],

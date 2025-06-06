@@ -1,4 +1,4 @@
-export default interface FormData {
+export interface FormData {
   email: string;
   cryptos: string[];
   frequency: boolean;

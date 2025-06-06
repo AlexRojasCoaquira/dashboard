@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-  import coins from '../api/data.json'
-  const data = ref([])
-  data.value = coins;
+  import { useCoins } from '../composables/useCoins.ts'
+  const { data } = await useCoins()
+  // const data = ref([])
+  // data.value = coins;
 </script>
