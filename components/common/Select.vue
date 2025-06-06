@@ -2,14 +2,19 @@
   <div>
     <label :for="id" class="block text-sm font-medium text-gray-700">{{ label }}</label>
     <select
-      :id="id"
-      :name="name"
-      v-model="selectedOption"
+      :multiple="multiple"
       :disabled="disabled"
+      :name="name"
+      v-model="internalValue"
+      :required="required"
       class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
     >
-      <option v-for="option in options" :key="option.value" :value="option.value">
-        {{ option.label }}
+      <option
+        v-for="option in options"
+        :key="option.name"
+        :value="option.name"
+      >
+        {{ option.name }}
       </option>
     </select>
   </div>
@@ -19,15 +24,29 @@
 
 interface Option {
   value: string;
-  label: string;
+  name: string;
 }
 
-const props = defineProps<{
-  label: string;
-  id: string;
+const props = withDefaults(defineProps<{
+  modelValue: string[];
+  multiple?: boolean;
   name: string;
+  required: boolean;
+  label: string;
   options: Option[];
   disabled?: boolean;
+}>(), {
+  multiple: false,
+  disabled: false,
+  required: false,
+});
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string[]): void;
 }>();
-const selectedOption = ref<string | null>(null);
+
+const internalValue = computed({
+  get: () => props.modelValue,
+  set: (val: string[]) => emit('update:modelValue', val),
+});
 </script>

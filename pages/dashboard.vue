@@ -6,23 +6,21 @@
         <div class="w-full lg:w-60">
           <CommonInput v-model="search" placeholder="Por nombre o símbolo" />
         </div>
-        <div class="w-full lg:w-24">
+        <div class="w-full lg:w-24" v-if="search">
           <button
+          @click="search = ''"
             type="button"
-            class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-          >Buscar</button>
+            class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
+          >Limpiar</button>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <!-- <FormCrypto /> -->
     </div>
     <div class="container mx-auto">
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-5" v-if="filterCrypto.length">
         <CardCrypto :data="coin" v-for="(coin, idx) in filterCrypto" :key="idx" />
       </div>
-      <div v-else>
-        No hay data
+      <div class="text-center py-15 border" v-else>
+        No se encontraron cryptomonedas
       </div>
     </div>
   </div>
