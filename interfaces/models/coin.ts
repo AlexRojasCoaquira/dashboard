@@ -3,6 +3,12 @@ interface Roi {
     currency: string
     percentage: number
 }
+export interface UseCoinsOptions {
+  vs_currency?: string
+  order?: string
+  per_page?: number
+  page?: number
+}
 export interface Coin {
   id: string
   symbol: string

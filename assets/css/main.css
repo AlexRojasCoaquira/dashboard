@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@layer utilities {
+    h1{
+        @apply text-5xl;
+    }
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .text-primary-dark {
+    color: var(--color-primary-dark);
+  }
+}
